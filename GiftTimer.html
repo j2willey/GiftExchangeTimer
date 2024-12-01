@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timers</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div>
+        <label for="numTimers">Number of Timers:</label>
+        <input type="number" id="numTimers" min="1" value="1">
+        <label for="defaultTime">Default Countdown Time (seconds):</label>
+        <input type="number" id="defaultTime" min="1" value="60">
+        <button id="createTimers">Continue</button>
+    </div>
+    <div id="timersContainer"></div>
+    <script src="js/timers.js"></script>
+</body>
+</html>
