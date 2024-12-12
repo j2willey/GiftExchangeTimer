@@ -1,11 +1,68 @@
-
 body {
     font-family: Arial, sans-serif;
+    background-image: url('../images/Diagonal-Blue.jpg');
+    /* background-image: url('../images/OA_Trademark_Reversed.png') */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 40px;
+    margin: 0; /* Ensure no default margin */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+#cover-logo {
+    background-image: url('../images/OA_Trademark_Reversed.png'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire div */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    width: 100px;
+    height: 100px;
+    float: left;
+    /* background-color: rgba(255, 255, 255, 0.8); Optional: Add a background color for visibility */
+    /* margin-right: 20px; Optional: Add some space between the logo and the content */
+}
+
+#title {
+    font-size: 68px;
+    font-family: 'Zilla Slab';
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0px;
+    color: white;
+}
+
+#timerSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 100pt;
+}
+
+#timerSettingsContainer .row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#timerSettingsContainer label {
+    font-size: 30pt;
+    size: 4ch;
+    color: white;
+    padding 20px;
+}
+
+#timerSettingsContainer input{
+    font-size: 20pt;
+    color: black;
+    padding 20px;
 }
 
 #timersContainer {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: center;
 }
 
 .timer {
@@ -13,15 +70,25 @@ body {
     padding: 10px;
     margin: 10px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background color for visibility */
+    transition: transform 1s, opacity 1s;
+    flex: 0 0 auto; /* Prevent timers from shrinking */
+    width: 300px; /* Fixed width */
+    height: 250px; /* Fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure buttons are at the bottom */
+    align-items: center; /* Center content horizontally */
 }
 
 .timer input[type="text"] {
-    width: 50px;
+    font-size: 32pt;
+    width: 10ch;
     text-align: center;
 }
 
 .timer .time {
-    font-size: 24px;
+    font-size: 36px;
     margin: 10px 0;
 }
 
@@ -34,3 +101,128 @@ body {
     display: flex;
     justify-content: space-around;
 }
+
+#giftsPanel {
+    width: calc(100% - 80px); /* Full width minus padding (40px on each side) */
+    height: calc(66.66vh - 80px); /* 2/3 of the viewport height minus padding (40px on top and bottom) */
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background color for visibility */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    display: none;
+}
+
+.gift-entry {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.gift-entry input {
+    margin-right: 10px;
+    padding: 5px;
+    flex: 1;
+    font-size: 32px; /* Double the font size */
+    height: auto; /* Constrain height to match the font size */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.gift-entry input[type="number"] {
+    width: 60px; /* Adjust width to fit one digit */
+    flex: none; /* Prevent flex-grow from overriding the width */
+}
+
+#giftListHeaders {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.gift-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 50%; /* Fixed width of 50% */
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Match the background color of the panel */
+    z-index: 1; /* Ensure the header stays on top */
+}
+
+.gift-header span {
+    flex: 1;
+    text-align: center;
+}
+
+#giftsList {
+    display: block;
+    width: 100%;
+}
+
+
+.gift {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.gift input {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 32px; /* Double the font size */
+    height: auto; /* Constrain height to match the font size */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.gift-steals {
+    width: 60px; /* Fixed width to fit one digit */
+    flex: none; /* Prevent flex-grow from overriding the width */
+}
+
+.gift-description {
+    flex: 3; /* 60% of the remaining space */
+}
+
+.gift-holder {
+    flex: 2; /* 40% of the remaining space */
+}
+
+#settingsIcon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    font-size: 32px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: left;
+    display: none;
+}
+
+.popup input {
+    width: 30ch;
+    margin: 5px 0;
+}
+.popup input[type="number"] {
+    width: 6ch;
+}
+
+.popup .settingRow {
+    padding: 5px 0px;
+}
+
