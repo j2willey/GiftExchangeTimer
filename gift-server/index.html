@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift List</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 10px; border-bottom: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Gift List</h1>
+    <ul id="giftList"></ul>
+    <script>
+        const giftList = document.getElementById('giftList');
+        const ws = new WebSocket('ws://' + window.location.host);
+
+        ws.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            if (message.type === 'init') {
+                giftList.innerHTML = '';
+                message.gifts.forEach((gift, index) => {
+                    addGiftToList(gift, index);
+                });
+            } else if (message.type === 'new-gift') {
+                addGiftToList(message.gift, giftList.children.length);
+            } else if (message.type === 'update-gift') {
+                updateGiftInList(message.id, message.updatedGift);
+            }
+        };
+
+        function addGiftToList(gift, index) {
+            const li = document.createElement('li');
+            li.id = 'gift-' + index;
+            li.textContent = `Steals: ${gift.steals}, Description: ${gift.description}, Holder: ${gift.holder}`;
+            giftList.appendChild(li);
+        }
+
+        function updateGiftInList(id, updatedGift) {
+            const li = document.getElementById('gift-' + id);
+            if (li) {
+                li.textContent = `Steals: ${updatedGift.steals}, Description: ${updatedGift.description}, Holder: ${updatedGift.holder}`;
+            }
+        }
+    </script>
+</body>
+</html>
